@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -10,8 +11,14 @@ namespace Walterlv.OpenInInstaller
         static int Main(string[] args) => args switch
         {
             { Length: 1 } => HandleSingleFile(args[0]),
-            _ => 0,
+            _ => OutputUsage(),
         };
+
+        private static int OutputUsage()
+        {
+            Console.WriteLine($"Usage: {Process.GetCurrentProcess().ProcessName} XxxSetup_1.0.0S.exe");
+            return 0;
+        }
 
         private static int HandleSingleFile(string fileName)
         {
