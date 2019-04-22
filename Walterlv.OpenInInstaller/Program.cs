@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
+using System.Reflection;
+using Walterlv.Utils;
 
 namespace Walterlv.OpenInInstaller
 {
@@ -45,9 +45,10 @@ namespace Walterlv.OpenInInstaller
 
         private static void UnzipInstaller(string fileName, string outputDirectory)
         {
-            ZipArchive zipArchive = ZipFile.Open(fileName, ZipArchiveMode.Read);
-            var files = zipArchive.Entries.Select(e => e.FullName).ToList();
-            zipArchive.ExtractToDirectory(outputDirectory);
+            var sourceDirectory = Path.GetDirectoryName(fileName);
+            Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "tools", "7z.exe");
+            var sevenZ = new CommandRunner("7z.exe", sourceDirectory);
+            _ = sevenZ.Run("");
         }
     }
 }

@@ -6,6 +6,11 @@
     <LangVersion>8.0</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
     <AssemblyName>InInstaller</AssemblyName>
+    <WarningsAsErrors>$(WarningsAsErrors);CS8600;CS8602;CS8603;CS8625</WarningsAsErrors>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="tools\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
 </Project>
