@@ -16,12 +16,17 @@ namespace Walterlv.OpenInInstaller
 
         private static int OutputUsage()
         {
+            var process = Process.GetCurrentProcess();
+
+
             Console.WriteLine($"Usage: {Process.GetCurrentProcess().ProcessName} XxxSetup_1.0.0S.exe");
             return 0;
         }
 
         private static int HandleSingleFile(string fileName)
         {
+            var process = Process.GetCurrentProcess();
+
             var extension = Path.GetExtension(fileName);
             if (".exe".Equals(extension))
             {
@@ -48,7 +53,7 @@ namespace Walterlv.OpenInInstaller
             var sourceDirectory = Path.GetDirectoryName(fileName);
             Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "tools", "7z.exe");
             var sevenZ = new CommandRunner("7z.exe", sourceDirectory);
-            _ = sevenZ.Run("");
+            _ = sevenZ.Run($@"x ""{fileName}"" -o""{outputDirectory}""");
         }
     }
 }
