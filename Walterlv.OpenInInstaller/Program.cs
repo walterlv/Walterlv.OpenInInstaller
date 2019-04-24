@@ -49,8 +49,9 @@ namespace Walterlv.OpenInInstaller
         private static void UnzipInstaller(string fileName, string outputDirectory)
         {
             var sourceDirectory = Path.GetDirectoryName(fileName);
-            Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "tools", "7z.exe");
-            var sevenZ = new CommandRunner("7z.exe", sourceDirectory);
+            var sevenZ = new CommandRunner(
+                Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "tools", "7z.exe"),
+                sourceDirectory);
             _ = sevenZ.Run($@"x ""{fileName}"" -o""{outputDirectory}""");
         }
     }
