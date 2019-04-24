@@ -25,8 +25,6 @@ namespace Walterlv.OpenInInstaller
 
         private static int HandleSingleFile(string fileName)
         {
-            var process = Process.GetCurrentProcess();
-
             var extension = Path.GetExtension(fileName);
             if (".exe".Equals(extension))
             {
