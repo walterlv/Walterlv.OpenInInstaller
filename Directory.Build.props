@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <NullableContextOptions>enable</NullableContextOptions>
+    <WarningsAsErrors>$(WarningsAsErrors);CS8600;CS8602;CS8603;CS8625</WarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Walterlv.Configurations\**\*.cs" Link="Configurations\%(FileName).cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Walterlv.Themes\**\*.cs" Link="Themes\%(FileName).cs" DependentUpon="%(Filename)" />
+    <Page Include="$(MSBuildThisFileDirectory)Walterlv.Themes\**\*.xaml" Link="Themes\%(FileName).xaml" />
+  </ItemGroup>
+</Project>
