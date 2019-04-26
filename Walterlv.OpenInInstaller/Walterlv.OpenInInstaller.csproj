@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Terminal.Gui" Version="0.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="tools\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="D:\Desktop\Walterlv.OpenInInstaller\Walterlv.Themes\**" />
+    <Page Remove="D:\Desktop\Walterlv.OpenInInstaller\Walterlv.Themes\Themes\**" />
   </ItemGroup>
 
 </Project>
