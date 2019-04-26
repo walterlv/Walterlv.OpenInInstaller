@@ -10,6 +10,7 @@
     <PackageReference Include="Terminal.Gui" Version="0.21.0" />
     <PackageReference Include="System.CommandLine.DragonFruit" Version="0.2.0-alpha.19174.3" />
     <PackageReference Include="System.CommandLine.Rendering" Version="0.2.0-alpha.19174.3" />
+    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="1.0.0-alpha-*" />
   </ItemGroup>
 
   <ItemGroup>
