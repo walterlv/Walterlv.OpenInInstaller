@@ -22,7 +22,19 @@ namespace Walterlv.OpenInInstaller
             var installers = new DirectoryInfo(Directory.GetCurrentDirectory())
                 .EnumerateFiles("EasiNoteSetup_*.exe").Reverse().ToList();
 
-            Console.Title = "安装包容器";
+            Console.Title = "EasiNote5 安装包容器";
+            Console.WriteLine($"EasiNote5 安装包容器，版本 {Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version}。");
+            Console.WriteLine();
+            if (installers.Count == 0)
+            {
+                Console.WriteLine("未发现任何 EasiNote5 安装包，请将此程序放到你下载了安装包的地方。");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("选择你需要在容器中启动的 EasiNote5 安装包：");
+            }
+            Console.WriteLine();
             for (int i = 0; i < installers.Count; i++)
             {
                 Console.Write("[");
@@ -30,6 +42,7 @@ namespace Walterlv.OpenInInstaller
                 Console.Write("] ");
                 Console.WriteLine(GetVersion(installers[i].Name));
             }
+            Console.WriteLine();
             var selection = ReadInt32("Run: ", 1) - 1;
             var directoryName = $"EasiNote5_{GetVersion(installers[selection].Name)}";
             ExtractInstaller(installers[selection].FullName, directoryName);
